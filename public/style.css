@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F9F5F0; /* Ivory background */
+    color: #333;
+    margin: 0;
+}
+
+header {
+    background: #ffffff;
+    padding: 20px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-bottom: 5px solid #D4AF37; /* Royal Gold */
+}
+
+.site-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #8B4513; /* Earth Brown */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+nav a:hover { color: #D4AF37; }
+
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/hero-pattern.png');
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.container {
+    padding: 40px 10%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.carte {
+    background: white;
+    border-radius: 15px;
+    padding: 0;
+    overflow: hidden;
+    transition: 0.3s;
+    border: 1px solid #eee;
+}
+
+.carte:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+.card-content { padding: 25px; position: relative; }
+
+.card-content::before {
+    content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 5px;
+    background: repeating-linear-gradient(90deg, #D4AF37, #D4AF37 20px, #8B4513 20px, #8B4513 40px);
+}
+
+.tag { color: #D4AF37; font-weight: bold; font-size: 0.8rem; }
+h2 { margin: 10px 0; color: #8B4513; }
