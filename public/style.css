@@ -2,9 +2,11 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #F9F5F0; /* Ivory background */
     color: #333;
     margin: 0;
+    background-image: url('Background.png');
+    background-repeat: repeat;
+    background-color: #F9F5F0; /* Ivory background */
 }
 
 header {
