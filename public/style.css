@@ -83,3 +83,9 @@ footer {
     padding: 40px;
     color: #777;
 }
+
+header div img {
+    height: 40px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
