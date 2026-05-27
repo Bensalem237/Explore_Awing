@@ -1,33 +1,39 @@
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const app = express();
+
 const db = new sqlite3.Database('./awing.db');
 
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
-// Shared Navigation Logic
+// 1. PAGE D'ACCUEIL : Une vraie Landing Page (Pas de boucle brute de la DB)
 app.get('/', (req, res) => {
-    db.all("SELECT * FROM culture", (err, rows) => {
-        res.render('index', { traditions: rows, title: "Home - The Awing Kingdom", headerTitle: "Explore Awing" });
-    });
+    res.render('index', { title: "Welcome to the Awing Kingdom" });
 });
 
+// 2. PAGE ORIGINS
 app.get('/origin', (req, res) => {
     db.all("SELECT * FROM culture WHERE category = 'Origin'", (err, rows) => {
-        res.render('index', { traditions: rows, title: "Origins & History", headerTitle: "Our Roots" });
+        if (err) throw err;
+        res.render('origin', { traditions: rows, title: "Our Origins & History" });
     });
 });
 
+// 3. PAGE MEALS
 app.get('/meals', (req, res) => {
     db.all("SELECT * FROM culture WHERE category = 'Meals'", (err, rows) => {
-        res.render('index', { traditions: rows, title: "Traditional Cuisine", headerTitle: "Awing Tastes" });
+        if (err) throw err;
+        res.render('meals', { traditions: rows, title: "Royal Gastronomy" });
     });
 });
 
+// 4. PAGE CUSTOMS
 app.get('/customs', (req, res) => {
-    db.all("SELECT * FROM culture WHERE category = 'Customs'", (err, rows) => {
-        res.render('index', { traditions: rows, title: "Customs & Traditions", headerTitle: "Heritage" });
+    // Filtre les cérémonies et coutumes
+    db.all("SELECT * FROM culture WHERE category = 'Ceremony' OR category = 'Customs'", (err, rows) => {
+        if (err) throw err;
+        res.render('customs', { traditions: rows, title: "Sacred Customs" });
     });
 });
 

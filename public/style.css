@@ -1,91 +1,203 @@
+/* ==========================================================================
+   1. POLICES ET CONFIGURATION GÉNÉRALE
+   ========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
 
 body {
     font-family: 'Poppins', sans-serif;
-    color: #333;
+    color: #333333;
     margin: 0;
-    /* background-image: url('Background.png');
-    background-repeat: repeat; */
-    background-color: #F9F5F0; /* Ivory background */
+    padding: 0;
+    /* Intégration de ton motif de tissu traditionnel en arrière-plan */
+    background-image: url('/background.jpg');
+    background-repeat: repeat;
+    background-color: #F9F5F0; /* Couleur ivoire de secours pendant le chargement */
 }
 
+/* ==========================================================================
+   2. RE-STYLISATION DE L'EN-TÊTE (HEADER & NAVIGATION)
+   ========================================================================== */
 header {
     background: #ffffff;
-    padding: 20px 10%;
+    padding: 15px 8%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    border-bottom: 5px solid #D4AF37; /* Royal Gold */
+    justify-content: space-between; /* Pousse le titre à gauche et le menu à droite */
+    align-items: center;         /* Aligne verticalement le logo, le texte et les liens */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    border-bottom: 5px solid #D4AF37; /* Ligne Or Royal */
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Reste visible au-dessus du contenu lors du défilement */
 }
 
 .site-title {
     font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    color: #8B4513; /* Earth Brown */
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #8B4513; /* Brun Terre Battue */
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espace entre le logo rond et le texte */
+    letter-spacing: 0.5px;
 }
 
+/* DESIGN DU LOGO : LE BADGE ROYAL CIRCULAIRE */
+.header-logo {
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;         /* Rend l'image parfaitement ronde */
+    border: 3px solid #D4AF37;   /* Sceau doré autour du motif */
+    object-fit: cover;          /* Empêche le motif d'être déformé ou écrasé */
+    box-shadow: 0 4px 10px rgba(139, 69, 19, 0.25); /* Ombre douce couleur terre */
+    transition: transform 0.3s ease; /* Fluidité de l'animation */
+}
+
+/* Effet interactif moderne au survol du logo */
+.header-logo:hover {
+    transform: scale(1.1) rotate(5deg); /* Légère rotation et zoom */
+}
+
+/* LE MENU DE NAVIGATION */
 nav ul {
-    list-style: none;
+    list-style: none; /* Supprime définitivement les puces noires */
     display: flex;
-    gap: 30px;
+    gap: 35px;       /* Espace régulier entre chaque lien */
+    margin: 0;
+    padding: 0;
 }
 
 nav a {
     text-decoration: none;
-    color: #333;
+    color: #4A4A4A;
     font-weight: 600;
+    font-size: 0.95rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: 0.3s;
+    transition: color 0.2s ease;
 }
 
-nav a:hover { color: #D4AF37; }
+/* Changement de couleur des liens au survol */
+nav a:hover {
+    color: #D4AF37; /* Devient doré au passage de la souris */
+}
 
+/* ==========================================================================
+   3. HERO BANNER & ZONE DE CONTENU
+   ========================================================================== */
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/hero-pattern.png');
-    color: white;
+    background: linear-gradient(rgba(45, 25, 10, 0.75), rgba(45, 25, 10, 0.75));
+    color: #ffffff;
     text-align: center;
-    padding: 60px 20px;
+    padding: 60px 10%;
+    margin-bottom: 40px;
 }
 
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #D4AF37;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+/* GRILLE ET DESIGN DES CARTES */
 .container {
-    padding: 40px 10%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 30px;
 }
 
 .carte {
-    background: white;
-    border-radius: 15px;
-    padding: 0;
+    background: #ffffff;
+    border-radius: 12px;
     overflow: hidden;
-    transition: 0.3s;
-    border: 1px solid #eee;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+    border: 1px solid rgba(139, 69, 19, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.carte:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+.carte:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(139, 69, 19, 0.15);
+}
 
-.card-content { padding: 25px; position: relative; }
+.card-content {
+    padding: 25px;
+    position: relative;
+}
 
+/* Ligne de motif géométrique bicolore en haut de chaque carte */
 .card-content::before {
-    content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 5px;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
     background: repeating-linear-gradient(90deg, #D4AF37, #D4AF37 20px, #8B4513 20px, #8B4513 40px);
 }
 
-.tag { color: #D4AF37; font-weight: bold; font-size: 0.8rem; }
+.tag {
+    color: #E67E22;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
 
-h2 { margin: 10px 0; color: #8B4513; }
+.carte h2 {
+    font-family: 'Playfair Display', serif;
+    color: #8B4513;
+    margin: 5px 0 15px 0;
+    font-size: 1.5rem;
+}
 
+.carte p {
+    line-height: 1.6;
+    color: #555555;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* ==========================================================================
+   4. FOOTER
+   ========================================================================== */
 footer {
     text-align: center;
     padding: 40px;
-    color: #777;
+    color: #8B4513;
+    font-size: 0.9rem;
+    font-weight: 600;
 }
 
-header div img {
-    height: 40px;
-    vertical-align: middle;
-    margin-right: 8px;
+.portal-card {
+    cursor: pointer;
+}
+.read-more {
+    display: inline-block;
+    margin-top: 15px;
+    color: #D4AF37;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+.portal-card:hover .read-more {
+    color: #8B4513;
+    transform: translateX(5px);
+    transition: 0.2s ease;
 }

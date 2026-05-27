@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="site-title">
+            <img src="/icon.png" alt="Awing Logo" class="header-logo">
+            <span>AWING HERITAGE</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/origin">Origins</a></li>
+                <li><a href="/meals">Meals</a></li>
+                <li><a href="/customs">Customs</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>
+            <%= title %>
+        </h1>
+        <p>Authentic records and sacred cultural aspects retrieved from our historical heritage.</p>
+    </section>
+
+    <main class="container">
+        <% traditions.forEach(item=> { %>
+            <div class="carte">
+                <div class="card-content">
+                    <span class="tag">
+                        <%= item.category %>
+                    </span>
+                    <h2>
+                        <%= item.title %>
+                    </h2>
+                    <p>
+                        <%= item.description %>
+                    </p>
+                </div>
+            </div>
+            <% }) %>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Awing Cultural Project - All Rights Reserved</p>
+    </footer>
+
+</body>
+
+</html>

@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
     <link rel="stylesheet" href="/style.css">
-    <link rel="shortcut icon" href="icon.png" type="image.png"/>
 </head>
 <body>
+
     <header>
         <div class="site-title">
-            <img src="/icon.png" alt="Logo Awing Heritage">
-            AWING HERITAGE
+            <img src="/icon.png" alt="Awing Logo" class="header-logo">
+            <span>AWING HERITAGE</span>
         </div>
         <nav>
             <ul>
-                <li><a href="/">Home</a></li>
+                <li><a href="/" class="active">Home</a></li>
                 <li><a href="/origin">Origins</a></li>
                 <li><a href="/meals">Meals</a></li>
                 <li><a href="/customs">Customs</a></li>
@@ -24,24 +24,52 @@
     </header>
 
     <section class="hero">
-        <h1><%= headerTitle %></h1>
-        <p>Discover the secrets of the North-West Region's most vibrant culture.</p>
+        <h1>The Awing Kingdom</h1>
+        <p>Welcome to one of the most vibrant traditional communities of the North-West Region of Cameroon. Explore our rich heritage preserved through generations.</p>
     </section>
 
+    <h2 style="text-align: center; font-family: 'Playfair Display', serif; color: #8B4513; margin-top: 40px; font-size: 2rem;">Discover Our Culture</h2>
+    
     <div class="container">
-        <% traditions.forEach(item => { %>
-            <div class="carte">
+        
+        <a href="/origin" style="text-decoration: none; color: inherit;">
+            <div class="carte portal-card">
                 <div class="card-content">
-                    <span class="tag"><%= item.category %></span>
-                    <h2><%= item.title %></h2>
-                    <p><%= item.description %></p>
+                    <span class="tag">History</span>
+                    <h2>Origins & Lineage</h2>
+                    <p>Trace the Tikar roots of the Awing people, the history of our fondom, and the mysteries surrounding the Sacred Lake.</p>
+                    <span class="read-more">Explore &rarr;</span>
                 </div>
             </div>
-        <% }) %>
+        </a>
+
+        <a href="/meals" style="text-decoration: none; color: inherit;">
+            <div class="carte portal-card">
+                <div class="card-content">
+                    <span class="tag">Gastronomy</span>
+                    <h2>Royal Culinary Arts</h2>
+                    <p>Delve into the famous Achuh yellow soup, the staples of our soil, and the ancestral etiquette of eating in the kingdom.</p>
+                    <span class="read-more">Explore &rarr;</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="/customs" style="text-decoration: none; color: inherit;">
+            <div class="carte portal-card">
+                <div class="card-content">
+                    <span class="tag">Traditions</span>
+                    <h2>Customs & Ceremonies</h2>
+                    <p>Understand the traditional marriage rites, the power of secret societies like the Nchinda, and the rhythms of the Keleng dance.</p>
+                    <span class="read-more">Explore &rarr;</span>
+                </div>
+            </div>
+        </a>
+
     </div>
 
     <footer>
-        &copy; 2026 Explore Awing Project - Web Programming Assignment
+        <p>&copy; 2026 Awing Cultural Project - All Rights Reserved</p>
     </footer>
+
 </body>
 </html>
