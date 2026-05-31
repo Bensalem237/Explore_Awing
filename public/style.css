@@ -1,7 +1,10 @@
-/* ==========================================================================
-   1. POLICES ET CONFIGURATION GÉNÉRALE
-   ========================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap');
+@font-face {
+    font-family: 'RubikDoodleTriangles-Regular';
+    src: url(RubikDoodleTriangles-Regular.woff2) format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 
 * {
     box-sizing: border-box;
@@ -12,60 +15,49 @@ body {
     color: #333333;
     margin: 0;
     padding: 0;
-    /* Intégration de ton motif de tissu traditionnel en arrière-plan */
-    background-image: url('/background.jpg');
-    background-repeat: repeat;
-    background-color: #F9F5F0; /* Couleur ivoire de secours pendant le chargement */
+    background-color: #000000e0;
 }
 
 /* ==========================================================================
    2. RE-STYLISATION DE L'EN-TÊTE (HEADER & NAVIGATION)
    ========================================================================== */
 header {
-    background: #ffffff;
+    background-image: url(/Background.png);
     padding: 15px 8%;
     display: flex;
-    justify-content: space-between; /* Pousse le titre à gauche et le menu à droite */
-    align-items: center;         /* Aligne verticalement le logo, le texte et les liens */
+    justify-content: space-between;
+    /* Pousse le titre à gauche et le menu à droite */
+    align-items: center;
+    /* Aligne verticalement le logo, le texte et les liens */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-    border-bottom: 5px solid #D4AF37; /* Ligne Or Royal */
+    border-bottom: 5px solid #D4AF37;
+    /* Ligne Or Royal */
     position: sticky;
     top: 0;
-    z-index: 1000; /* Reste visible au-dessus du contenu lors du défilement */
+    z-index: 1000;
+    /* Reste visible au-dessus du contenu lors du défilement */
 }
 
 .site-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'RubikDoodleTriangles-Regular', sans-serif;
     font-size: 1.8rem;
     font-weight: 700;
-    color: #8B4513; /* Brun Terre Battue */
+    color: #D4AF37;
+    /* Brun Terre Battue */
     display: flex;
     align-items: center;
-    gap: 15px; /* Espace entre le logo rond et le texte */
+    gap: 15px;
+    /* Espace entre le logo rond et le texte */
     letter-spacing: 0.5px;
-}
-
-/* DESIGN DU LOGO : LE BADGE ROYAL CIRCULAIRE */
-.header-logo {
-    height: 55px;
-    width: 55px;
-    border-radius: 50%;         /* Rend l'image parfaitement ronde */
-    border: 3px solid #D4AF37;   /* Sceau doré autour du motif */
-    object-fit: cover;          /* Empêche le motif d'être déformé ou écrasé */
-    box-shadow: 0 4px 10px rgba(139, 69, 19, 0.25); /* Ombre douce couleur terre */
-    transition: transform 0.3s ease; /* Fluidité de l'animation */
-}
-
-/* Effet interactif moderne au survol du logo */
-.header-logo:hover {
-    transform: scale(1.1) rotate(5deg); /* Légère rotation et zoom */
 }
 
 /* LE MENU DE NAVIGATION */
 nav ul {
-    list-style: none; /* Supprime définitivement les puces noires */
+    list-style: none;
+    /* Supprime définitivement les puces noires */
     display: flex;
-    gap: 35px;       /* Espace régulier entre chaque lien */
+    gap: 35px;
+    /* Espace régulier entre chaque lien */
     margin: 0;
     padding: 0;
 }
@@ -82,7 +74,8 @@ nav a {
 
 /* Changement de couleur des liens au survol */
 nav a:hover {
-    color: #D4AF37; /* Devient doré au passage de la souris */
+    color: #D4AF37;
+    /* Devient doré au passage de la souris */
 }
 
 /* ==========================================================================
@@ -124,7 +117,7 @@ nav a:hover {
     background: #ffffff;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
     border: 1px solid rgba(139, 69, 19, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -188,6 +181,7 @@ footer {
 .portal-card {
     cursor: pointer;
 }
+
 .read-more {
     display: inline-block;
     margin-top: 15px;
@@ -196,6 +190,7 @@ footer {
     font-size: 0.9rem;
     text-transform: uppercase;
 }
+
 .portal-card:hover .read-more {
     color: #8B4513;
     transform: translateX(5px);
