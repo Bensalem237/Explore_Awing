@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
+    <title>
+        <%= title %>
+    </title>
     <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
+
+    <div class="bg-pattern-overlay"></div>
 
     <header>
         <div class="site-title">
             <img src="/icon.png" alt="Awing Logo" class="header-logo">
-            <span>AWING HERITAGE</span>
+            <span>AWING</span>
         </div>
         <nav>
             <ul>
-                <li><a href="/" class="active">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="/origin">Origins</a></li>
                 <li><a href="/meals">Meals</a></li>
                 <li><a href="/customs">Customs</a></li>
@@ -23,48 +29,59 @@
         </nav>
     </header>
 
-    <h2 style="text-align: center; font-family: 'Playfair Display', serif; color: #8B4513; margin-top: 40px; font-size: 2rem;">Discover Our Culture</h2>
-    
-    <div class="container">
-        
-        <a href="/origin" style="text-decoration: none; color: inherit;">
-            <div class="carte portal-card">
-                <div class="card-content">
-                    <span class="tag">History</span>
-                    <h2>Origins & Lineage</h2>
-                    <p>Trace the Tikar roots of the Awing people, the history of our fondom, and the mysteries surrounding the Sacred Lake.</p>
-                    <span class="read-more">Explore &rarr;</span>
+    <section class="hero">
+        <h1>The Cultural Architecture of Awing.</h1>
+        <p>A refined repository of historical lineages, sovereign culinary arts, and ancestral laws belonging to the
+            Awing Kingdom, situated in the North-West Region of Cameroon.</p>
+    </section>
+
+    <main class="container">
+
+        <div class="card">
+            <div class="card-color-block"></div>
+            <div class="card-content">
+                <span class="tag">01 / History</span>
+                <h2>Origins & Sacred Lineage</h2>
+                <p>Explore the deep Tikar migrations, the early foundations of the Santa subdivision fondoms, and
+                    the ancient spiritual convenants surrounding the Lake Awing sanctuary.</p>
+                <div class="read-more">
+                    <a href="/origin" style="text-decoration: none; color: inherit;">View Records &rarr;</a>
                 </div>
             </div>
-        </a>
+        </div>
 
-        <a href="/meals" style="text-decoration: none; color: inherit;">
-            <div class="carte portal-card">
-                <div class="card-content">
-                    <span class="tag">Gastronomy</span>
-                    <h2>Royal Culinary Arts</h2>
-                    <p>Delve into the famous Achuh yellow soup, the staples of our soil, and the ancestral etiquette of eating in the kingdom.</p>
-                    <span class="read-more">Explore &rarr;</span>
+        <div class="card">
+            <div class="card-color-block"></div>
+            <div class="card-content">
+                <span class="tag">02 / Gastronomy</span>
+                <h2>Royal Culinary Arts</h2>
+                <p>Discover the precise traditional chemistry of the Achuh yellow soup, limestone pairings, and the
+                    complex etiquette of royal banquets.</p>
+                <div class="read-more">
+                    <a href="/meals" style="text-decoration: none; color: inherit;">View Gallery &rarr;</a>
                 </div>
             </div>
-        </a>
+        </div>
 
-        <a href="/customs" style="text-decoration: none; color: inherit;">
-            <div class="carte portal-card">
-                <div class="card-content">
-                    <span class="tag">Traditions</span>
-                    <h2>Customs & Ceremonies</h2>
-                    <p>Understand the traditional marriage rites, the power of secret societies like the Nchinda, and the rhythms of the Keleng dance.</p>
-                    <span class="read-more">Explore &rarr;</span>
+        <div class="card">
+            <div class="card-color-block"></div>
+            <div class="card-content">
+                <span class="tag">03 / Sovereignity</span>
+                <h2>Customs & Secret Societies</h2>
+                <p>An introduction to the legislative roles of the Nchinda noble circles, palace protocols, and the
+                    ancestral steps of the Keleng dance.</p>
+                <div class="read-more">
+                    <a href="/customs" style="text-decoration: none; color: inherit;">View Customs &rarr;</a>
                 </div>
             </div>
-        </a>
+        </div>
 
-    </div>
+    </main>
 
     <footer>
-        <p>&copy; 2026 Awing Cultural Project - All Rights Reserved</p>
+        <p>&copy 2026 Awing Cultural Project &bull; Academic Programming Assignment</p>
     </footer>
 
 </body>
+
 </html>

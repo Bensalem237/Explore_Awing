@@ -12,10 +12,12 @@
 
 <body>
 
+    <div class="bg-pattern-overlay"></div>
+
     <header>
         <div class="site-title">
             <img src="/icon.png" alt="Awing Logo" class="header-logo">
-            <span>AWING HERITAGE</span>
+            <span>AWING</span>
         </div>
         <nav>
             <ul>
@@ -36,7 +38,8 @@
 
     <main class="container">
         <% traditions.forEach(item=> { %>
-            <div class="carte">
+            <div class="card">
+                <div class="card-color-block"></div>
                 <div class="card-content">
                     <span class="tag">
                         <%= item.category %>
@@ -53,7 +56,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Awing Cultural Project - All Rights Reserved</p>
+        <p>&copy 2026 Awing Cultural Project &bull; Academic Programming Assignment</p>
     </footer>
 
 </body>

@@ -1,198 +1,210 @@
-@font-face {
-    font-family: 'RubikDoodleTriangles-Regular';
-    src: url(RubikDoodleTriangles-Regular.woff2) format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
+/* Import external styles */
+@import url('https://fonts.googleapis.com/css2?family-Fraunces:opsz,wght@9..144,400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    color: #333333;
-    margin: 0;
-    padding: 0;
-    background-color: #000000e0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #F6F4F0;
+    color: #1A1A1A;
+    line-height: 1.6;
 }
 
-/* ==========================================================================
-   2. RE-STYLISATION DE L'EN-TÊTE (HEADER & NAVIGATION)
-   ========================================================================== */
+/* Discreet texture in global background */
+.bg-pattern-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/background.jpg');
+    background-repeat: repeat;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: -1;
+}
+
 header {
-    background-image: url(/Background.png);
-    padding: 15px 8%;
+    background: transparent;
+    padding: 30px 10%;
     display: flex;
     justify-content: space-between;
-    /* Pousse le titre à gauche et le menu à droite */
     align-items: center;
-    /* Aligne verticalement le logo, le texte et les liens */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-    border-bottom: 5px solid #D4AF37;
-    /* Ligne Or Royal */
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    /* Reste visible au-dessus du contenu lors du défilement */
 }
 
 .site-title {
-    font-family: 'RubikDoodleTriangles-Regular', sans-serif;
-    font-size: 1.8rem;
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
     font-weight: 700;
-    color: #D4AF37;
-    /* Brun Terre Battue */
+    color: #4A2E1B;
     display: flex;
     align-items: center;
-    gap: 15px;
-    /* Espace entre le logo rond et le texte */
-    letter-spacing: 0.5px;
+    gap: 12px;
 }
 
-/* LE MENU DE NAVIGATION */
+.header-logo {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 2px solid #D4AF37;
+    object-fit: cover;
+}
+
 nav ul {
     list-style: none;
-    /* Supprime définitivement les puces noires */
     display: flex;
-    gap: 35px;
-    /* Espace régulier entre chaque lien */
-    margin: 0;
-    padding: 0;
+    gap: 40px;
 }
 
 nav a {
     text-decoration: none;
-    color: #4A4A4A;
-    font-weight: 600;
-    font-size: 0.95rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: color 0.2s ease;
+    color: #666666;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-bottom: 4px;
 }
 
-/* Changement de couleur des liens au survol */
 nav a:hover {
-    color: #D4AF37;
-    /* Devient doré au passage de la souris */
+    color: #1A1A1A;
 }
 
-/* ==========================================================================
-   3. HERO BANNER & ZONE DE CONTENU
-   ========================================================================== */
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #D4AF37;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
 .hero {
-    background: linear-gradient(rgba(45, 25, 10, 0.75), rgba(45, 25, 10, 0.75));
-    color: #ffffff;
-    text-align: center;
-    padding: 60px 10%;
-    margin-bottom: 40px;
+    padding: 80px 10% 60px 10%;
+    max-width: 900px;
 }
 
 .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    color: #D4AF37;
+    font-family: 'Fraunces', serif;
+    font-size: 4rem;
+    line-height: 1.1;
+    color: #2C1A10;
+    margin-bottom: 25px;
+    font-weight: 700;
 }
 
 .hero p {
-    font-size: 1.1rem;
-    max-width: 800px;
-    margin: 0 auto;
-    font-weight: 300;
+    font-size: 1.15rem;
+    color: #555555;
+    max-width: 600px;
+    font-weight: 400;
 }
 
-/* GRILLE ET DESIGN DES CARTES */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 5%;
+    padding: 0 10% 100px 10%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
 }
 
-.carte {
+/* Make the first card larger to create an asymetry */
+.container .card:first-child {
+    grid-column: span 2;
+}
+
+.card {
     background: #ffffff;
-    border-radius: 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(74, 46, 27, 0.08);
     overflow: hidden;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
-    border: 1px solid rgba(139, 69, 19, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.01);
 }
 
-.carte:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(139, 69, 19, 0.15);
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(74, 46, 27, 0.05);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+.card-color-block {
+    height: 12px;
+    background: linear-gradient(90deg, #D4AF37 0%, #8B4513 100%);
+    opacity: 0.8;
 }
 
 .card-content {
-    padding: 25px;
-    position: relative;
-}
-
-/* Ligne de motif géométrique bicolore en haut de chaque carte */
-.card-content::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 6px;
-    background: repeating-linear-gradient(90deg, #D4AF37, #D4AF37 20px, #8B4513 20px, #8B4513 40px);
+    padding: 40px;
 }
 
 .tag {
-    color: #E67E22;
-    font-weight: 600;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    color: #D4AF37;
+    font-weight: 600;
     display: inline-block;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
-.carte h2 {
-    font-family: 'Playfair Display', serif;
-    color: #8B4513;
-    margin: 5px 0 15px 0;
-    font-size: 1.5rem;
+.card h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.8rem;
+    color: #2C1A10;
+    margin-bottom: 15px;
 }
 
 .carte p {
-    line-height: 1.6;
-    color: #555555;
+    color: #666666;
     font-size: 0.95rem;
-    margin: 0;
-}
-
-/* ==========================================================================
-   4. FOOTER
-   ========================================================================== */
-footer {
-    text-align: center;
-    padding: 40px;
-    color: #8B4513;
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-
-.portal-card {
-    cursor: pointer;
+    line-height: 1.6;
+    margin-bottom: 25px;
 }
 
 .read-more {
-    display: inline-block;
-    margin-top: 15px;
-    color: #D4AF37;
+    font-size: 0.85rem;
     font-weight: 600;
-    font-size: 0.9rem;
     text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #2C1A10;
+    margin-top: 25px;
+    width: fit-content;
+    transition: all 0.3s ease;
 }
 
-.portal-card:hover .read-more {
-    color: #8B4513;
-    transform: translateX(5px);
-    transition: 0.2s ease;
+.read-more:hover {
+    color: #D4AF37;
+}
+
+.read-more::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #D4AF37;
+    transition: width 0.3s ease;
+}
+
+.read-more:hover::after {
+    width: 100%;
+}
+
+footer {
+    padding: 60px 10%;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    text-align: center;
+    font-size: 0.85rem;
+    color: #888888;
 }
