@@ -4,10 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <%= title %>
-    </title>
+    <title><%= title %></title>
     <link rel="stylesheet" href="/style.css">
+
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme') || 'system';
+            if (savedTheme === 'dark' || (savedTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+            }
+        })();
+    </script>
 </head>
 
 <body>
@@ -17,7 +26,7 @@
     <header>
         <div class="site-title">
             <img src="/icon.png" alt="Awing Logo" class="header-logo">
-            <span>AWING</span>
+            <span>exlore<span class="title-name">AWING</span></span>
         </div>
         <nav>
             <ul>
@@ -26,8 +35,53 @@
                 <li><a href="/meals">Meals</a></li>
                 <li><a href="/customs">Customs</a></li>
             </ul>
+
+            <div class="theme-switch-container">
+                <select id="themeSelector" class="theme-select">
+                    <option value="light">Light Theme</option>
+                    <option value="dark">Dark Theme</option>
+                    <option value="system">System Theme</option>
+                </select>
+            </div>
         </nav>
     </header>
+
+    <script>
+        const themeSelector = document.getElementById('themeSelector');
+
+        // Initializing the value of the select according to local storage
+        const currentTheme = localStorage.getItem('theme') || 'system';
+        themeSelector.value = currentTheme;
+
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else if (theme === 'light') {
+                document.documentElement.removeAttribute('data-theme');
+            } else {
+                // match device mode
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+            }
+        }
+
+        // Get the manual switching
+        themeSelector.addEventListener('change', (e) => {
+            const selected = e.target.value;
+            localStorage.setItem('theme', selected);
+            applyTheme(selected);
+        });
+
+        // Get the automatic chages of the device if it's in match device mode
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+            if (localStorage.getItem('theme') === 'system' || !localStorage.getItem('theme')) {
+                applyTheme('system');
+            }
+        });
+    </script>
 
     <section class="hero">
         <h1><span class="txt-gold">Sacred</span> Customs</h1>
@@ -58,5 +112,4 @@
     </footer>
 
 </body>
-
 </html>
