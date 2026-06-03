@@ -4,12 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <%= title %>
-    </title>
+    <title><%= title %></title>
     <link rel="stylesheet" href="/style.css">
-</head>
 
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'system';
+            if (savedTheme === 'dark' || (savedTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+            }
+        })();
+    </script>
+</head>
 <body>
 
     <div class="bg-pattern-overlay"></div>
@@ -17,7 +25,7 @@
     <header>
         <div class="site-title">
             <img src="/icon.png" alt="Awing Logo" class="header-logo">
-            <span>AWING</span>
+            <span>exlore<span class="title-name">AWING</span></span>
         </div>
         <nav>
             <ul>
@@ -26,11 +34,56 @@
                 <li><a href="/meals">Meals</a></li>
                 <li><a href="/customs">Customs</a></li>
             </ul>
+
+            <div class="theme-switch-container">
+                <select id="themeSelector" class="theme-select">
+                    <option value="light">Light Theme</option>
+                    <option value="dark">Dark Theme</option>
+                    <option value="system">Match System</option>
+                </select>
+            </div>
         </nav>
     </header>
 
+    <script>
+        const themeSelector = document.getElementById('themeSelector');
+
+        // Initializing the select value according to localStorage
+        const currentTheme = localStorage.getItem('theme') || 'system';
+        themeSelector.value = currentTheme;
+
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else if (theme === 'light') {
+                document.documentElement.removeAttribute('data-theme');
+            } else {
+                // Match Device Mode
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+            }
+        }
+
+        // Listen to manual change from the user
+        themeSelector.addEventListener('change', (e) => {
+            const selected = e.target.value;
+            localStorage.setItem('theme', selected);
+            applyTheme(selected);
+        });
+
+        // Listen to automatic changes from the device if it's in match device mode
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+            if (localStorage.getItem('theme') === 'system' || !localStorage.getItem('theme')) {
+                applyTheme('system');
+            }
+        });
+    </script>
+
     <section class="hero">
-        <h1>The Cultural Architecture of Awing.</h1>
+        <h1>The <span class="txt-gold">Cultural Architecture</span> of <span class="txt-gold">Awing</span> .</h1>
         <p>A refined repository of historical lineages, sovereign culinary arts, and ancestral laws belonging to the
             Awing Kingdom, situated in the North-West Region of Cameroon.</p>
     </section>
@@ -83,5 +136,4 @@
     </footer>
 
 </body>
-
 </html>

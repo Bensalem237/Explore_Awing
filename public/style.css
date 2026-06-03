@@ -1,17 +1,42 @@
-/* Import external styles */
-@import url('https://fonts.googleapis.com/css2?family-Fraunces:opsz,wght@9..144,400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;700&family=Plus+Jakarta+sans:wght@300;400;500;600&display=swap');
+
+/* Default theme (Clair) */
+:root {
+    --bg-global: #F6F4F0;     /* Ivory matte */
+    --bg-card: #ffffff;       /* Pure white */
+    --text-main: #1A1A1A;     /* Soft carbon */
+    --text-muted: #666666;    /* Average grey */
+    --title-color: #2C1A10;   /* Luxury brown */
+    --border-subtle: rgba(74, 46, 27, 0.08);
+    --gold-royal: #D4AF37;    /* Traditional gold */
+    --bg-pattern-opacity: 0.05; /* Background fabric transparency */
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+    --bg-global: #12100E;     /* Earthy black */
+    --bg-card: #1C1814;       /* Slightly clearer earthy black */
+    --text-main: #EAE5DE;     /* Off-white */
+    --text-muted: #A39E98;    /* Warm grey */
+    --title-color: #F5EFEB;   /* Bright ecru */
+    --border-subtle: rgba(212, 175, 55, 0.15);
+    --gold-royal: #E5C158;    /* Slightly brighter gold */
+    --bg-pattern-opacity: 0.05; /* Reduced background fabric transparency */
+}
 
 * {
     box-sizing: border-box;
-    margin: 0;
     padding: 0;
+    margin: 0;
 }
 
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background-color: #F6F4F0;
-    color: #1A1A1A;
+    background-color: var(--bg-global);
+    color: var(--text-main);
     line-height: 1.6;
+    /* Fluid transition during mode switching */
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* Discreet texture in global background */
@@ -23,9 +48,10 @@ body {
     height: 100%;
     background-image: url('/background.jpg');
     background-repeat: repeat;
-    opacity: 0.05;
+    opacity: var(--bg-pattern-opacity);
     pointer-events: none;
     z-index: -1;
+    transition: opacity 0.4s ease;
 }
 
 header {
@@ -37,10 +63,10 @@ header {
 }
 
 .site-title {
-    font-family: 'Fraunces', serif;
+    /* font-family: 'Fraunces', serif; */
     font-size: 1.5rem;
-    font-weight: 700;
-    color: #4A2E1B;
+    font-weight: 600;
+    color: var(--title-color);
     display: flex;
     align-items: center;
     gap: 12px;
@@ -50,8 +76,14 @@ header {
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    border: 2px solid #D4AF37;
+    border: 2px solid var(--gold-royal);
     object-fit: cover;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 40px;
 }
 
 nav ul {
@@ -62,7 +94,7 @@ nav ul {
 
 nav a {
     text-decoration: none;
-    color: #666666;
+    color: var(--text-muted);
     font-weight: 500;
     font-size: 0.9rem;
     transition: all 0.3s ease;
@@ -71,7 +103,7 @@ nav a {
 }
 
 nav a:hover {
-    color: #1A1A1A;
+    color: var(--text-main);
 }
 
 nav a::after {
@@ -81,7 +113,7 @@ nav a::after {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: #D4AF37;
+    background-color: var(--gold-royal);
     transition: width 0.3s ease;
 }
 
@@ -98,7 +130,7 @@ nav a:hover::after {
     font-family: 'Fraunces', serif;
     font-size: 4rem;
     line-height: 1.1;
-    color: #2C1A10;
+    color: var(--title-color);
     margin-bottom: 25px;
     font-weight: 700;
 }
@@ -123,9 +155,9 @@ nav a:hover::after {
 }
 
 .card {
-    background: #ffffff;
+    background: var(--bg-card);
     border-radius: 20px;
-    border: 1px solid rgba(74, 46, 27, 0.08);
+    border: 1px solid var(--border-subtle);
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.01);
@@ -133,7 +165,7 @@ nav a:hover::after {
 
 .card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(74, 46, 27, 0.05);
+    box-shadow: 0 20px 40px rgba(74, 46, 27, var(--bg-pattern-opacity));
     border-color: rgba(212, 175, 55, 0.3);
 }
 
@@ -151,7 +183,7 @@ nav a:hover::after {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #D4AF37;
+    color: var(--gold-royal);
     font-weight: 600;
     display: inline-block;
     margin-bottom: 15px;
@@ -160,12 +192,12 @@ nav a:hover::after {
 .card h2 {
     font-family: 'Fraunces', serif;
     font-size: 1.8rem;
-    color: #2C1A10;
+    color: var(--title-color);
     margin-bottom: 15px;
 }
 
 .carte p {
-    color: #666666;
+    color: var(--text-muted);
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: 25px;
@@ -176,14 +208,15 @@ nav a:hover::after {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #2C1A10;
+    color: var(--title-color);
     margin-top: 25px;
     width: fit-content;
     transition: all 0.3s ease;
+    position: relative;
 }
 
 .read-more:hover {
-    color: #D4AF37;
+    color: var(--gold-royal);
 }
 
 .read-more::after {
@@ -193,18 +226,50 @@ nav a:hover::after {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: #D4AF37;
+    background-color: var(--gold-royal);
     transition: width 0.3s ease;
 }
 
 .read-more:hover::after {
-    width: 100%;
+    width: 87%;
 }
 
 footer {
     padding: 60px 10%;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(0, 0, 0, var(--bg-pattern-opacity));
     text-align: center;
     font-size: 0.85rem;
     color: #888888;
+}
+
+.txt-gold {
+    color: var(--gold-royal);
+}
+
+.title-name {
+    color: var(--gold-royal);
+    font-weight: 800;
+}
+
+/* Theme selector */
+.theme-switch-container {
+    position: relative;
+    display: inline-bloc;
+}
+
+.theme-select {
+    background: var(--bg-card);
+    color: var(--text-main);
+    border: 1px solid var(--border-subtle);
+    padding: 8px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    transition: all var(--gold-royal);
+}
+
+.theme-select:hover {
+    border-color: var(--gold-royal);
 }
