@@ -127,6 +127,14 @@ nav a:hover::after {
     width: 100%;
 }
 
+.active {
+    color: var(--text-main);
+}
+
+.active::after {
+    width: 100%;
+}
+
 .hero {
     padding: 80px 10% 60px 10%;
     max-width: 900px;

@@ -14,6 +14,7 @@ db.serialize(() => {
     const stmt = db.prepare("INSERT INTO culture (category, title, description, image_url) VALUES (?, ?, ?, ?)");
     
     // ORIGINS
+    stmt.run("Origin", "")
     stmt.run("Origin", "The Tikar Roots", "The Awing people, originally known as Awing-Bambuit, trace their ancestry back to the Tikar migrations. They settled in the Santa subdivision, establishing a powerful kingdom guided by ancestral wisdom.", "origin.jpg");
     stmt.run("Origin", "The Sacred Lake Awing", "A mystical site located at an altitude of 2000m. It is believed to be the home of the village spirits. To this day, the lake remains a site for traditional sacrifices and royal rituals.", "lake.jpg");
     
